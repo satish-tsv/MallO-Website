@@ -46,8 +46,14 @@ function Hero() {
       <div className="wrap hero-in">
         <div className="hero-txt">
           <Reveal><h1>Your mall visit, <span className="hl">made simple.</span></h1></Reveal>
-          <Reveal delay={80}><p className="lead">Find any store, food, offer or washroom, with clear steps to get there. Free on Android and iPhone.</p></Reveal>
-          <Reveal delay={160}><CityPicker /></Reveal>
+          <Reveal delay={80}><p className="lead">Find what you need, get there easily, and win rewards every time you shop. Free on Android and iPhone.</p></Reveal>
+          <Reveal delay={160}>
+            <ul className="perks">
+              <li><span className="mic c-sky"><Icon name="search" /></span><div><b>Find it fast</b><small>Stores, food, offers and washrooms in one search</small></div></li>
+              <li><span className="mic c-mint"><Icon name="map" /></span><div><b>Get there easily</b><small>Clear steps from landmarks you can see</small></div></li>
+              <li><span className="mic c-peach"><Icon name="gift" /></span><div><b>Win rewards</b><small>Points on every bill, for gift cards at the mall</small></div></li>
+            </ul>
+          </Reveal>
           <Reveal delay={240}><StoreButtons /></Reveal>
         </div>
         <Reveal className="hero-art" delay={120}>
@@ -230,6 +236,17 @@ export function Home() {
         <div className="wrap faqwrap">
           <Reveal><span className="kicker">Questions</span><h2>Good to know.</h2><p className="muted">More answers on the <a href="#/help">Help</a> page.</p></Reveal>
           <Accordion items={SHOPPER_FAQ.slice(0, 5)} />
+        </div>
+      </section>
+
+      <section className="frame tint-peach" id="cities">
+        <div className="wrap split2">
+          <Reveal>
+            <span className="kicker">Where MallO is live</span>
+            <h2>Find MallO in your city.</h2>
+            <p className="lead">Pick your city to see the malls where you can use MallO today. We’re adding more malls all the time.</p>
+          </Reveal>
+          <Reveal delay={100}><CityPicker /></Reveal>
         </div>
       </section>
 

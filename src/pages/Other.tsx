@@ -12,15 +12,15 @@ const VALUES = [
 export function About() {
   return (
     <>
-      <PageHero photoKey="chandelier" kicker="About MallO" title="Built in Hyderabad, for the mall you’re in." tint="mint">
-        <p className="lead">Big malls are wonderful, and easy to get lost in. MallO started with the question every shopper asks: “where do I go?” We’re an app-first team building the simplest way to answer it.</p>
+      <PageHero photoKey="chandelier" kicker="About MallO" title="Built by shoppers, for shoppers." tint="mint">
+        <p className="lead">We’re shoppers too. We’ve walked in circles looking for a store, missed offers we didn’t know about, and never got anything back for all those bills. So we built the app we wanted: find anything in the mall fast, and get rewarded every time you shop.</p>
       </PageHero>
 
       <section className="sec">
         <div className="wrap split2">
           <div>
-            <Reveal><span className="kicker">Our story</span><h2>A guide in every visitor’s pocket.</h2></Reveal>
-            <Reveal><p className="lead">Malls keep getting bigger: more floors, more stores, more food and more offers. Signs and help desks can only do so much. MallO puts the whole mall on your phone, in plain words, with honest answers and clear steps.</p>
+            <Reveal><span className="kicker">Our story</span><h2>Easier visits. Real rewards.</h2></Reveal>
+            <Reveal><p className="lead">Malls keep getting bigger: more floors, more stores, more food and more offers. MallO puts the whole mall on your phone, in plain words, with honest answers and clear steps. And every eligible bill earns MallO points you can turn into gift cards to spend at the mall.</p>
             <p className="muted">MallO is live in large malls in Hyderabad, Bengaluru, Chennai and Mumbai, on Android and iPhone, and we keep adding more.</p></Reveal>
           </div>
           <Reveal delay={100}><Img photo={PHOTOS.gallery} w={1200} className="rounded tallimg" /></Reveal>

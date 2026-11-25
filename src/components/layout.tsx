@@ -48,7 +48,7 @@ export function Footer() {
         <div className="footgrid">
           <div>
             <Logo size={30} />
-            <p className="muted">Find stores, food, offers and facilities in your mall, and how to get there. Made in Hyderabad.</p>
+            <p className="muted">Find stores, food, offers and facilities in your mall, get there easily, and win rewards when you shop.</p>
             <StoreButtons />
           </div>
           <div>

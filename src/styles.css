@@ -461,3 +461,10 @@ main:focus, h1:focus { outline: none; }
   .howart { height: 520px; }
   .frame-photo, .get-img, .pband-img { height: 320px; }
 }
+
+/* hero perks (v4) */
+.perks { list-style: none; padding: 0; margin: 0 0 clamp(16px, 3vh, 28px); display: grid; gap: clamp(8px, 1.6vh, 14px); max-width: 520px; }
+.perks li { display: flex; align-items: center; gap: 14px; background: #fff; border-radius: 18px; padding: clamp(10px, 1.6vh, 14px) 16px; box-shadow: 0 14px 30px -24px rgba(0,0,0,.35); }
+.perks b { display: block; font: 700 17px var(--fd); }
+.perks small { color: var(--ink-2); font-size: 14px; }
+#cities .city { max-width: none; padding: 24px; }
