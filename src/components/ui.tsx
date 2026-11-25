@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import type { Photo } from '../content';
+import { STORE, type Photo } from '../content';
 
 /** The MallO wordmark: "Mall" followed by the marigold ring with a dot. */
 export function Logo({ light = false, size = 26 }: { light?: boolean; size?: number }) {
@@ -21,8 +21,8 @@ export function Img({ photo, w = 1600, className = '', eager = false }: { photo:
     <span className={`img ${className}`}>
       <img
         src={photo.src(w)}
-        srcSet={`${photo.src(Math.round(w / 2))} ${Math.round(w / 2)}w, ${photo.src(w)} ${w}w`}
-        sizes="(max-width: 800px) 100vw, 60vw"
+        srcSet={`${photo.src(800)} 800w, ${photo.src(1600)} 1600w`}
+        sizes="(max-width: 800px) 100vw, 50vw"
         alt={photo.alt}
         loading={eager ? 'eager' : 'lazy'}
         decoding="async"
@@ -95,18 +95,16 @@ const PATHS = {
   close: <path d="M6 6l12 12M18 6 6 18" />,
 };
 
-/** App store badges. Not links yet: the app isn't in the stores until launch. */
+/** App store badges. They link to the stores once the URLs are set in content.ts. */
 export function StoreButtons() {
+  const badge = (href: string, icon: ReactNode, small: string, big: string) => {
+    const inner = <>{icon}<span><small>{small}</small><b>{big}</b></span></>;
+    return href ? <a className="store" href={href} target="_blank" rel="noopener noreferrer">{inner}</a> : <span className="store">{inner}</span>;
+  };
   return (
-    <div className="stores" role="list" aria-label="App availability">
-      <span className="store" role="listitem">
-        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.6 9.48 19.4 6.4a.4.4 0 0 0-.7-.4l-1.84 3.15A11.4 11.4 0 0 0 12 8.1c-1.74 0-3.38.38-4.86 1.05L5.3 6a.4.4 0 0 0-.7.4l1.8 3.08A10.2 10.2 0 0 0 1.5 17.5h21a10.2 10.2 0 0 0-4.9-8.02zM7 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" /></svg>
-        <span><small>Coming soon on</small><b>Android</b></span>
-      </span>
-      <span className="store" role="listitem">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" strokeWidth="2" /><path d="M11 18h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
-        <span><small>Coming soon on</small><b>iPhone</b></span>
-      </span>
+    <div className="stores">
+      {badge(STORE.android, <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.6 9.48 19.4 6.4a.4.4 0 0 0-.7-.4l-1.84 3.15A11.4 11.4 0 0 0 12 8.1c-1.74 0-3.38.38-4.86 1.05L5.3 6a.4.4 0 0 0-.7.4l1.8 3.08A10.2 10.2 0 0 0 1.5 17.5h21a10.2 10.2 0 0 0-4.9-8.02zM7 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" /></svg>, 'Get it on', 'Android')}
+      {badge(STORE.ios, <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" strokeWidth="2" /><path d="M11 18h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>, 'Download for', 'iPhone')}
     </div>
   );
 }

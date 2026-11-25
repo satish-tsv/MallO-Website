@@ -27,12 +27,13 @@ npm run typecheck
 
 Every push to `main` builds the site and publishes it to GitHub Pages (`.github/workflows/pages.yml`).
 
-## Before launch
+## Before going live
 
 - Replace the placeholder `@mallo.example` email addresses in `src/content.ts`.
 - Publish the Privacy Policy and Terms of Use (`src/pages/Other.tsx`, `Legal`).
 - Forms open the visitor's email app; connect a form service if you want submissions stored.
-- Photos are loaded from Unsplash (free under the Unsplash License; credits on the About page). Swap in your own mall photography in `src/content.ts` when you have it.
+- Add the Play Store and App Store links in `STORE` in `src/content.ts`; the badges become clickable.
+- Photos are free under the Unsplash License (credits on the About page). They are listed in `src/photos.json` and downloaded into the site by the deploy workflow (`npm run images` does the same locally). Swap in your own mall photography there when you have it.
 
 ## Editing copy
 

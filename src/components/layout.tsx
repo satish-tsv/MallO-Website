@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { EMAIL, PHOTOS } from '../content';
-import { Icon, Logo } from './ui';
+import { Icon, Logo, StoreButtons } from './ui';
 
 export type Route = 'home' | 'partner' | 'about' | 'help';
 
@@ -49,7 +49,7 @@ export function Footer() {
           <div>
             <Logo size={30} />
             <p className="muted">Find stores, food, offers and facilities in your mall, and how to get there. Made in Hyderabad.</p>
-            <p className="badge-soon"><Icon name="phone" size={18} /> Coming soon on Android and iPhone</p>
+            <StoreButtons />
           </div>
           <div>
             <h4>MallO</h4>
@@ -101,7 +101,7 @@ export function PageHero({ photoKey, kicker, title, children, tint = 'gold' }: {
           <h1>{title}</h1>
           {children}
         </div>
-        <span className="img phero-img"><img src={p.src(1400)} alt={p.alt} loading="eager" decoding="async" onLoad={(e) => e.currentTarget.classList.add('loaded')} /></span>
+        <span className="img phero-img"><img src={p.src(1600)} alt={p.alt} loading="eager" decoding="async" onLoad={(e) => e.currentTarget.classList.add('loaded')} /></span>
       </div>
     </section>
   );

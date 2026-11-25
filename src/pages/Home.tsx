@@ -1,4 +1,4 @@
-import { EMAIL, PHOTOS, POINTS, SHOPPER_FAQ } from '../content';
+import { PHOTOS, POINTS, SHOPPER_FAQ } from '../content';
 import { Accordion, Icon, Img, Reveal, StoreButtons } from '../components/ui';
 import { PhoneDemo } from '../components/PhoneDemo';
 
@@ -10,11 +10,11 @@ function Hero() {
       <span className="blob b3" aria-hidden="true" />
       <div className="wrap hero-in">
         <div className="hero-txt">
-          <Reveal><span className="pill"><i />Coming soon on Android and iPhone</span></Reveal>
+          <Reveal><span className="pill"><i />Now in Hyderabad · Android and iPhone</span></Reveal>
           <Reveal delay={80}><h1>Your mall, <span className="hl">made simple.</span></h1></Reveal>
           <Reveal delay={160}><p className="lead">Find any store, food, offer or washroom in your mall, with clear steps to get there. In three taps or fewer, and free.</p></Reveal>
           <Reveal delay={240}><StoreButtons /></Reveal>
-          <Reveal delay={300}><p className="small muted">Launching first in Hyderabad. No account needed to find your way.</p></Reveal>
+          <Reveal delay={300}><p className="small muted">Free. No account needed to find your way.</p></Reveal>
         </div>
         <Reveal className="hero-art" delay={120}>
           <Img photo={PHOTOS.atrium} w={1100} className="ha-photo a" eager />
@@ -132,19 +132,18 @@ export function Home() {
         <div className="wrap getapp">
           <Reveal className="get-txt">
             <span className="kicker">Get the app</span>
-            <h2>Coming soon on Android and iPhone.</h2>
-            <p className="lead">MallO launches in large malls in Hyderabad first, with more cities to follow.</p>
+            <h2>Get MallO on Android and iPhone.</h2>
+            <p className="lead">Free to download. Pick your mall and start exploring, with no sign-up needed.</p>
             <StoreButtons />
             <ul className="ticks">
               <li><Icon name="check" size={18} /> Free, with no ads</li>
               <li><Icon name="check" size={18} /> Works on weak signal</li>
               <li><Icon name="check" size={18} /> Your location and searches stay on your phone</li>
             </ul>
-            <p className="small muted">Want to hear when it launches? Write to <a href={`mailto:${EMAIL.hello}?subject=${encodeURIComponent('Tell me when MallO launches')}`}>{EMAIL.hello}</a>.</p>
           </Reveal>
           <Reveal className="get-art" delay={120}>
             <Img photo={PHOTOS.phone} w={1100} className="get-img" />
-            <span className="get-badge"><Icon name="phone" size={20} /><span><b>Android and iPhone</b><small>Coming soon</small></span></span>
+            <span className="get-badge"><Icon name="phone" size={20} /><span><b>Android and iPhone</b><small>Free to download</small></span></span>
           </Reveal>
         </div>
       </section>

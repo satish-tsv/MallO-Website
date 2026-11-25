@@ -21,7 +21,7 @@ export function About() {
           <div>
             <Reveal><span className="kicker">Our story</span><h2>A guide in every visitor’s pocket.</h2></Reveal>
             <Reveal><p className="lead">Malls keep getting bigger: more floors, more stores, more food and more offers. Signs and help desks can only do so much. MallO puts the whole mall on your phone, in plain words, with honest answers and clear steps.</p>
-            <p className="muted">We’re starting with large malls in Hyderabad and Android, and will add iPhone and more cities once the experience is right.</p></Reveal>
+            <p className="muted">We’re starting with large malls in Hyderabad, on Android and iPhone, and will add more cities over time.</p></Reveal>
           </div>
           <Reveal delay={100}><Img photo={PHOTOS.gallery} w={1200} className="rounded tallimg" /></Reveal>
         </div>
@@ -105,7 +105,7 @@ export function Legal({ kind }: { kind: 'privacy' | 'terms' }) {
       <PageHero photoKey="atrium" kicker="Legal" title={title} tint="lilac" />
       <section className="sec">
         <div className="wrap narrow">
-          <p className="lead">Our full {title} will be published here before the MallO app launches.</p>
+          <p className="lead">Our full {title} will appear here.</p>
           <p className="muted">Until then, if you have a question, write to <a href={`mailto:${EMAIL.grievance}`}>{EMAIL.grievance}</a>.</p>
         </div>
       </section>
