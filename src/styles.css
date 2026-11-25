@@ -500,11 +500,11 @@ h1, h2, h3 { letter-spacing: -.03em; }
 .hl { background: linear-gradient(180deg, transparent 64%, var(--gold) 64%, var(--gold) 88%, transparent 88%); }
 
 /* ===== v6: amber headings, round heading font, light body font, illustrated, animated ===== */
-:root { --amber: #CC8100; --fd: "Outfit", system-ui, sans-serif; --fb: "Newsreader", Georgia, serif; }
+:root { --amber: #CC8100; --fu: "Manrope", system-ui, sans-serif; --fd: "Outfit", system-ui, sans-serif; --fb: "Newsreader", Georgia, serif; }
 body { font: 300 19px/1.55 var(--fb); letter-spacing: 0; }
 h1, h2, h3 { font-family: var(--fd); color: var(--amber); font-weight: 800; letter-spacing: -.025em; }
 .lead { font-weight: 300; color: #4b4c57; }
-.btn, .nav, .store, .tile, .city-tabs, .pchips, .perks, label, input, select, textarea, summary, .kicker, .float, .tabs, .foot h4, .foot li, .legal, .ticks, .gcard, .pcard, .slide-txt h3, .hsteps2 b, .ptrack b, .city-live, .city-malls b, .get-badge, .mitem b, .wcard b, .ccard b, .need b, .prom b, .ecard-body b, .moment-txt b, .acc summary { font-family: var(--fd); }
+.btn, .nav, .store, .tile, .city-tabs, .pchips, .perks, label, input, select, textarea, summary, .kicker, .float, .tabs, .foot h4, .foot li, .legal, .ticks, .gcard, .pcard, .slide-txt h3, .hsteps2 b, .ptrack b, .city-live, .city-malls b, .get-badge, .mitem b, .wcard b, .ccard b, .need b, .prom b, .ecard-body b, .moment-txt b, .acc summary { font-family: var(--fu); }
 .tint-soft { background: var(--soft); }
 .px { position: absolute; inset: -12% 0; will-change: translate; }
 .px .img, .ha-photo .img, .get-img .img, .pband-img .img, .howphoto .img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -570,7 +570,7 @@ h1, h2, h3 { font-family: var(--fd); color: var(--amber); font-weight: 800; lett
 .hsteps2 li { position: relative; display: flex; gap: 16px; align-items: center; padding: 16px 18px; border-radius: 22px; background: transparent; transition: background .4s, box-shadow .4s, transform .4s var(--ease); overflow: hidden; }
 .hsteps2 li.on { background: #fff; box-shadow: 0 1px 0 var(--line), 0 20px 40px -28px rgba(0,0,0,.35); transform: translateX(8px); }
 .hsteps2 li::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--gold); }
-.hsteps2 li.on::after { animation: fill 3s linear both; }
+.hsteps2 li.on::after { animation: fill 3.6s linear both; }
 .hs-ic { width: 64px; height: 64px; border-radius: 20px; background: var(--fill); display: grid; place-items: center; flex: none; transition: background .4s, transform .4s var(--ease); }
 .hsteps2 li.on .hs-ic { background: var(--gold-soft); transform: rotate(-6deg); }
 .hsteps2 b { font-size: 21px; font-weight: 700; display: block; }
@@ -603,5 +603,26 @@ h1, h2, h3 { font-family: var(--fd); color: var(--amber); font-weight: 800; lett
 .city { padding: 22px; }
 
 @media (prefers-reduced-motion: reduce) { .px { translate: none !important; } .car-track { transition: none; } }
-.screen, .phone { font-family: var(--fd); font-weight: 400; }
+.screen, .phone { font-family: var(--fu); font-weight: 500; }
 .ssteps b, .shi { color: var(--ink); }
+
+/* v7: map phone for how it works */
+.slide-txt h3, .tcenter b { font-family: var(--fd); }
+.mapphone .screen { position: relative; }
+.mscr { position: absolute; inset: 54px 14px 14px; opacity: 0; transform: translateX(24px); transition: opacity .5s var(--ease), transform .5s var(--ease); pointer-events: none; }
+.mscr.on { opacity: 1; transform: none; }
+.mrow { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 16px; padding: 10px; margin-bottom: 8px; border: 2px solid transparent; }
+.mrow.sel { border-color: var(--gold); }
+.mrow b { font-size: 13.5px; display: block; }
+.mrow small { color: var(--ink-2); font-size: 11.5px; }
+.mtick { margin-left: auto; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); display: grid; place-items: center; }
+.mnote { font-size: 11px; color: var(--ink-2); margin: 10px 4px; line-height: 1.4; }
+.mallmap { width: 100%; height: auto; display: block; margin-bottom: 10px; }
+.mscr.on .myou circle:first-child { animation: pulse 1.6s ease-out infinite; transform-origin: 60px 100px; }
+@keyframes pulse { from { transform: scale(.6); opacity: .7; } to { transform: scale(1.8); opacity: 0; } }
+.mpin { transform-origin: 197px 112px; }
+.mscr.on .mpin { animation: drop .7s .3s var(--ease) both; }
+@keyframes drop { from { transform: translateY(-30px); opacity: 0; } 60% { transform: translateY(3px); opacity: 1; } to { transform: none; } }
+.mscr.on .mdest { animation: glow 1.6s ease-in-out infinite; }
+@keyframes glow { 50% { fill: #FFC9BF; } }
+.perks b, .tile span, .store b, .btn { font-weight: 700; }

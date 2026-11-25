@@ -1,35 +1,39 @@
 import { useEffect, useState } from 'react';
 import { Icon } from './ui';
 
-type Demo = { q: string; results: { l: string; name: string; where: string; why: string }[]; steps: string[]; to: string };
+type Demo = { q: string; results: { l: string; name: string; where: string; why: string; open?: boolean }[]; steps: string[]; to: string };
 
 const DEMOS: Demo[] = [
   {
-    q: 'running shoes',
-    results: [
-      { l: 'N', name: 'Nike', where: 'Level 2', why: 'Sells running shoes' },
-      { l: 'D', name: 'Decathlon', where: 'Level 1', why: 'Usually stocks sports shoes' },
-    ],
-    to: 'Nike',
-    steps: ['Take the lift by the food court to Level 2', 'Turn left and walk past the fountain', 'Nike is on your right, opposite Zara'],
+    q: 'Where did I park?',
+    results: [{ l: 'P', name: 'Your car', where: 'Level B2 · Pillar 14', why: 'Saved at 6:40 pm' }],
+    to: 'your car',
+    steps: ['Take lift 3 by Lifestyle', 'Go down to B2', 'Pillar 14 is on your left'],
   },
   {
-    q: 'biryani',
+    q: 'Croma offers on iPhone?',
     results: [
-      { l: 'P', name: 'Paradise', where: 'Level 3 · Food court', why: 'Biryani and a drink for ₹299' },
-      { l: 'S', name: 'Spice Route', where: 'Level 3 · Food court', why: 'Serves Hyderabadi biryani' },
+      { l: 'C', name: 'Croma', where: 'Level 1', why: 'Bank offer on iPhone · ends Sun', open: true },
+      { l: 'C', name: 'Croma', where: 'Level 1', why: 'Exchange offer · ends 30 Nov', open: true },
+    ],
+    to: 'Croma',
+    steps: ['Take the escalator by the fountain', 'Turn right on Level 1', 'Croma is the third store'],
+  },
+  {
+    q: 'Nearest washroom?',
+    results: [
+      { l: '♿', name: 'Washroom', where: 'Level 2 · 40 m', why: 'Accessible washroom too' },
+    ],
+    to: 'the washroom',
+    steps: ['Walk towards the food court', 'Turn left after Starbucks', 'Washrooms are at the end'],
+  },
+  {
+    q: 'Biryani under ₹300?',
+    results: [
+      { l: 'P', name: 'Paradise', where: 'Level 3 · Food court', why: 'Biryani and a drink for ₹299', open: true },
     ],
     to: 'Paradise',
-    steps: ['Take the escalator by Lifestyle to Level 3', 'Walk into the food court', 'Paradise is the third counter on your left'],
-  },
-  {
-    q: 'baby care room',
-    results: [
-      { l: '♡', name: 'Baby care room', where: 'Level 1', why: 'Facility' },
-      { l: '♡', name: 'Baby care room', where: 'Level 3', why: 'Facility' },
-    ],
-    to: 'the baby care room',
-    steps: ['Walk towards the main lifts on Level 1', 'Turn right after the washrooms', 'The baby care room is at the end of the corridor'],
+    steps: ['Take the escalator to Level 3', 'Walk into the food court', 'Third counter on your left'],
   },
 ];
 
@@ -63,11 +67,11 @@ export function PhoneDemo() {
           {d.results.map((r, k) => (
             <div className="sitem" key={r.name + k} style={{ transitionDelay: `${k * 120}ms` }}>
               <span className="slogo">{r.l}</span>
-              <div><b>{r.name}</b><small>{r.where} · <em>Open until 10 pm</em></small><span className="swhy">{r.why}</span></div>
+              <div><b>{r.name}</b><small>{r.where}{r.open && <> · <em>Open until 10 pm</em></>}</small><span className="swhy">{r.why}</span></div>
             </div>
           ))}
           <div className="ssteps" style={{ transitionDelay: '260ms' }}>
-            <b>How to get to {d.to}</b>
+            <b>{d.to === 'your car' ? 'Back to your car' : `How to get to ${d.to}`}</b>
             <ol>{d.steps.map((s) => <li key={s}>{s}</li>)}</ol>
           </div>
         </div>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { CITIES, PHOTOS, SHOPPER_FAQ, type Photo } from '../content';
+import { CITIES, PHOTOS, SHOPPER_FAQ } from '../content';
 import { Accordion, Icon, Img, Reveal, StoreButtons } from '../components/ui';
 import { Illo, type IlloName } from '../components/Illo';
 import { PhoneDemo } from '../components/PhoneDemo';
+import { MapDemo } from '../components/MapDemo';
 
 const reduceMotion = () => typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
@@ -58,7 +59,7 @@ function Hero() {
           <Reveal delay={80}><p className="lead">Find it. Get there. Win rewards.</p></Reveal>
           <Reveal delay={160}>
             <ul className="perks">
-              {([['store', 'Every store'], ['map', 'Easy directions'], ['kids', 'Fun for kids'], ['gift', 'Rewards']] as [IlloName, string][]).map(([n, t]) => (
+              {([['store', 'Every store'], ['map', 'Easy directions'], ['offer', 'Live offers'], ['gift', 'Rewards']] as [IlloName, string][]).map(([n, t]) => (
                 <li key={t}><Illo name={n} size={46} /><b>{t}</b></li>
               ))}
             </ul>
@@ -73,56 +74,6 @@ function Hero() {
           <span className="float f2"><Illo name="games" size={34} />Game zone, Level 3</span>
           <span className="float f3"><Illo name="points" size={34} />+50 points</span>
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Explore carousel ---------- */
-type Slide = { p: Photo; p2?: Photo; icon: IlloName; t: string; s: string; tone: string; deco: [IlloName, IlloName] };
-const SLIDES: Slide[] = [
-  { p: PHOTOS.bags, icon: 'store', t: 'Shop every store', s: 'Any brand, any floor, real hours.', tone: 't-gold', deco: ['offer', 'gift'] },
-  { p: PHOTOS.kids, p2: PHOTOS.arcade, icon: 'kids', t: 'Fun for kids', s: 'Play zones, games and activities.', tone: 't-coral', deco: ['games', 'kids'] },
-  { p: PHOTOS.biryani, icon: 'food', t: 'Eat well', s: 'Food courts and cafés, open now.', tone: 't-mint', deco: ['food', 'points'] },
-  { p: PHOTOS.escalator, icon: 'offer', t: 'Grab the offers', s: 'Real offers, with end dates.', tone: 't-sky', deco: ['offer', 'bill'] },
-];
-
-function Explore() {
-  const [hold, setHold] = useState(false);
-  const [i, setI] = useCycle(SLIDES.length, 5000, hold);
-  const go = (d: number) => setI((x) => (x + d + SLIDES.length) % SLIDES.length);
-  return (
-    <section className="frame" id="explore">
-      <div className="wrap">
-        <Reveal className="head center"><h2>Everything in the mall, in one app.</h2></Reveal>
-        <div className="car" onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)} aria-roledescription="carousel" aria-label="What you can do with MallO">
-          <div className="car-track" style={{ transform: `translateX(-${i * 100}%)` }}>
-            {SLIDES.map((sl, k) => (
-              <div className={`slide ${sl.tone} ${k === i ? 'cur' : ''}`} key={sl.t} role="group" aria-roledescription="slide" aria-label={`${k + 1} of ${SLIDES.length}: ${sl.t}`} aria-hidden={k !== i}>
-                <div className="slide-art">
-                  <Img photo={sl.p} w={1600} className="slide-img" />
-                  {sl.p2 && <Img photo={sl.p2} w={800} className="slide-img2" />}
-                  <span className="deco d1"><Illo name={sl.deco[0]} size={72} /></span>
-                  <span className="deco d2"><Illo name={sl.deco[1]} size={60} /></span>
-                </div>
-                <div className="slide-txt">
-                  <Illo name={sl.icon} size={88} className="slide-icon" />
-                  <h3>{sl.t}</h3>
-                  <p>{sl.s}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <button className="car-btn prev" aria-label="Previous" onClick={() => go(-1)}><Icon name="arrow" size={20} /></button>
-          <button className="car-btn next" aria-label="Next" onClick={() => go(1)}><Icon name="arrow" size={20} /></button>
-          <div className="car-dots">
-            {SLIDES.map((sl, k) => (
-              <button key={sl.t} aria-label={`Show ${sl.t}`} aria-current={k === i} onClick={() => setI(k)}>
-                {k === i && <span className={hold ? 'held' : ''} key={i} />}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -167,13 +118,13 @@ function Little() {
 
 /* ---------- How it works: steps light up in turn, photo drifts ---------- */
 const HOW: [IlloName, string, string][] = [
-  ['store', 'Pick your mall', 'Once. We remember it.'],
-  ['ai', 'Ask in your words', '“Kids shoes”, “biryani”, “ATM”.'],
-  ['map', 'Follow the steps', 'From landmarks you can see.'],
+  ['store', 'Pick your mall', 'We suggest the nearest one.'],
+  ['ai', 'Ask for anything', 'A store, an offer, a washroom.'],
+  ['map', 'See it on the map', 'With simple steps to get there.'],
 ];
 
 function How() {
-  const [i, setI] = useCycle(HOW.length, 3000);
+  const [i, setI] = useCycle(HOW.length, 3600);
   return (
     <section className="frame" id="how">
       <div className="wrap how">
@@ -190,8 +141,8 @@ function How() {
         </div>
         <Reveal className="howart" delay={120}>
           <div className="howphoto"><div data-speed="0.12" className="px"><Img photo={PHOTOS.gallery} w={1600} /></div></div>
-          <div className="howphone"><PhoneDemo /></div>
-          <span className="float f4"><Illo name="map" size={34} />Turn left at the fountain</span>
+          <div className="howphone"><MapDemo step={i} /></div>
+          <span className="float f4"><Illo name="map" size={34} />Croma is on your right</span>
         </Reveal>
       </div>
     </section>
@@ -272,7 +223,6 @@ export function Home() {
   return (
     <>
       <Hero />
-      <Explore />
       <Little />
       <How />
       <Points />
