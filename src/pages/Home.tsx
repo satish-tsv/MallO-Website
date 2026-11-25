@@ -3,7 +3,7 @@ import { CITIES, PHOTOS, SHOPPER_FAQ } from '../content';
 import { Accordion, Icon, Img, Reveal, StoreButtons } from '../components/ui';
 import { Illo, type IlloName } from '../components/Illo';
 import { PhoneDemo } from '../components/PhoneDemo';
-import { MapDemo } from '../components/MapDemo';
+import { AskChat, MapSearch } from '../components/HowDemos';
 
 const reduceMotion = () => typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
@@ -50,6 +50,22 @@ function useCycle(n: number, ms: number, paused = false) {
 }
 
 /* ---------- Hero ---------- */
+const QUESTIONS = ['Where did I park?', 'Croma offers on iPhone?', 'Nearest washroom?', 'Biryani under ₹300?', 'Where can kids play?', 'Is Zara open now?'];
+const SPOTS = ['q1', 'q2', 'q3'];
+
+/** Shopper questions that pop up around the phone, three at a time. */
+function Questions() {
+  const [i] = useCycle(QUESTIONS.length, 2400);
+  return (
+    <div className="qs" aria-hidden="true">
+      {SPOTS.map((spot, k) => {
+        const q = QUESTIONS[(i + k * 2) % QUESTIONS.length];
+        return <span key={spot + q} className={`qbub ${spot}`}>{q}</span>;
+      })}
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="frame hero">
@@ -67,12 +83,9 @@ function Hero() {
           <Reveal delay={240}><StoreButtons /></Reveal>
         </div>
         <Reveal className="hero-art" delay={120}>
-          <div className="ha-photo a"><div data-speed="0.08" className="px"><Img photo={PHOTOS.atrium} w={1600} eager /></div></div>
-          <div className="ha-photo b"><Img photo={PHOTOS.kids} w={800} eager /></div>
+          <span className="ring" aria-hidden="true" />
           <div className="ha-phone"><PhoneDemo /></div>
-          <span className="float f1"><Illo name="offer" size={34} />Offer ends today</span>
-          <span className="float f2"><Illo name="games" size={34} />Game zone, Level 3</span>
-          <span className="float f3"><Illo name="points" size={34} />+50 points</span>
+          <Questions />
         </Reveal>
       </div>
     </section>
@@ -81,14 +94,14 @@ function Hero() {
 
 /* ---------- Little things: floating tiles around a phone ---------- */
 const TILES: { n: IlloName; t: string }[] = [
-  { n: 'map', t: 'Directions' },
   { n: 'washroom', t: 'Washrooms' },
+  { n: 'lift', t: 'Lifts' },
+  { n: 'store', t: 'Stores' },
+  { n: 'offer', t: 'Store offers' },
+  { n: 'food', t: 'Food court' },
   { n: 'parking', t: 'Parking' },
-  { n: 'ai', t: 'Ask AI' },
+  { n: 'atm', t: 'ATMs' },
   { n: 'kids', t: 'Kids play' },
-  { n: 'games', t: 'Games' },
-  { n: 'gift', t: 'Gift cards' },
-  { n: 'friends', t: 'Invite friends' },
 ];
 
 function Little() {
@@ -116,34 +129,22 @@ function Little() {
   );
 }
 
-/* ---------- How it works: steps light up in turn, photo drifts ---------- */
-const HOW: [IlloName, string, string][] = [
-  ['store', 'Pick your mall', 'We suggest the nearest one.'],
-  ['ai', 'Ask for anything', 'A store, an offer, a washroom.'],
-  ['map', 'See it on the map', 'With simple steps to get there.'],
-];
-
+/* ---------- Find it: map search and Ask AI side by side ---------- */
 function How() {
-  const [i, setI] = useCycle(HOW.length, 3600);
   return (
     <section className="frame" id="how">
-      <div className="wrap how">
-        <div>
-          <Reveal><h2>From “where is it?” to “there it is.”</h2></Reveal>
-          <ol className="hsteps2">
-            {HOW.map(([n, t, s], k) => (
-              <li key={t} className={i === k ? 'on' : ''} onMouseEnter={() => setI(k)}>
-                <span className="hs-ic"><Illo name={n} size={44} /></span>
-                <div><b>{t}</b><p>{s}</p></div>
-              </li>
-            ))}
-          </ol>
+      <div className="wrap">
+        <Reveal className="head center"><h2>From “where is it?” to “there it is.”</h2></Reveal>
+        <div className="duo">
+          <Reveal className="duo-col">
+            <p className="duo-label"><Illo name="map" size={30} /> Search the map</p>
+            <MapSearch />
+          </Reveal>
+          <Reveal className="duo-col" delay={120}>
+            <p className="duo-label"><Illo name="ai" size={30} /> Or just ask</p>
+            <AskChat />
+          </Reveal>
         </div>
-        <Reveal className="howart" delay={120}>
-          <div className="howphoto"><div data-speed="0.12" className="px"><Img photo={PHOTOS.gallery} w={1600} /></div></div>
-          <div className="howphone"><MapDemo step={i} /></div>
-          <span className="float f4"><Illo name="map" size={34} />Croma is on your right</span>
-        </Reveal>
       </div>
     </section>
   );

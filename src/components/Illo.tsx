@@ -122,6 +122,24 @@ const ART = {
       <path d="M40 44l3 3 5-6" fill="none" {...s} />
     </>
   ),
+  lift: (
+    <>
+      <rect x="12" y="6" width="40" height="52" rx="6" fill={W} {...s} />
+      <path d="M32 6v52" fill="none" {...s} />
+      <rect x="16" y="12" width="12" height="40" rx="2" fill={B} {...s} />
+      <rect x="36" y="12" width="12" height="40" rx="2" fill={B} {...s} />
+      <path d="M22 26l4 5h-8zM42 36l4-5h-8z" fill={Y} {...s} strokeWidth={2} />
+    </>
+  ),
+  atm: (
+    <>
+      <rect x="8" y="10" width="48" height="34" rx="6" fill={G} {...s} />
+      <rect x="16" y="18" width="32" height="12" rx="2" fill={W} {...s} />
+      <path d="M18 44v8h28v-8" fill={W} {...s} />
+      <rect x="22" y="46" width="20" height="12" rx="2" fill={Y} {...s} />
+      <path d="M32 49v6M29 52h6" fill="none" {...s} strokeWidth={2} />
+    </>
+  ),
   phone: (
     <>
       <rect x="18" y="6" width="28" height="52" rx="6" fill={W} {...s} />

@@ -626,3 +626,65 @@ h1, h2, h3 { font-family: var(--fd); color: var(--amber); font-weight: 800; lett
 .mscr.on .mdest { animation: glow 1.6s ease-in-out infinite; }
 @keyframes glow { 50% { fill: #FFC9BF; } }
 .perks b, .tile span, .store b, .btn { font-weight: 700; }
+
+/* ===== v8: one font (Outfit), shades of ink, clean hero, map + chat ===== */
+:root { --fd: "Outfit", system-ui, sans-serif; --fu: "Outfit", system-ui, sans-serif; --fb: "Outfit", system-ui, sans-serif; --ink-3: #8a8b96; }
+body { font: 300 18px/1.55 var(--fb); color: var(--ink); }
+.lead { color: var(--ink-2); font-weight: 300; }
+.hero .lead { font-style: normal; font-weight: 400; color: var(--ink); }
+p, .muted { color: var(--ink-2); }
+.fine, small, .formnote { color: var(--ink-3); }
+b, strong { font-weight: 600; color: var(--ink); }
+.screen, .phone { font-family: var(--fd); font-weight: 400; }
+
+/* hero: no photos, a soft ring behind the phone, questions popping up */
+.hero-art { display: grid; place-items: center; }
+.ring { position: absolute; width: min(520px, 80%); aspect-ratio: 1; border-radius: 50%; border: 38px solid var(--gold-soft); left: 50%; top: 50%; translate: -50% -50%; }
+.ring::after { content: ""; position: absolute; inset: 34%; border-radius: 50%; background: var(--gold-soft); }
+.ha-phone { position: relative; right: auto; top: auto; transform: scale(var(--ps, .82)); transform-origin: center; z-index: 2; }
+.qs { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.qbub { position: absolute; background: #fff; color: var(--ink); font: 500 16px var(--fd); padding: 12px 18px; border-radius: 20px; box-shadow: 0 1px 0 var(--line), 0 18px 40px -18px rgba(0,0,0,.35); white-space: nowrap; animation: qpop 2.4s var(--ease) both; }
+.qbub::after { content: ""; position: absolute; bottom: -7px; width: 14px; height: 14px; background: #fff; transform: rotate(45deg); border-radius: 3px; }
+.q1 { left: 0; top: 16%; } .q1::after { right: 28px; }
+.q2 { right: 0; top: 40%; animation-delay: .25s; } .q2::after { left: 28px; }
+.q3 { left: 6%; bottom: 14%; animation-delay: .5s; } .q3::after { right: 28px; }
+@keyframes qpop { 0% { opacity: 0; transform: translateY(12px) scale(.9); } 15%, 80% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-8px); } }
+@media (max-width: 560px) { .qbub { font-size: 13.5px; padding: 9px 13px; } .q2 { right: -4px; } }
+
+/* map search + ask ai */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1040px; margin: 0 auto; }
+.duo-label { display: flex; align-items: center; gap: 10px; font: 600 20px var(--fd); color: var(--ink); margin: 0 0 12px; }
+.panel { background: var(--soft); border-radius: 28px; padding: 18px; height: clamp(360px, calc(100svh - 300px), 470px); display: flex; flex-direction: column; overflow: hidden; font-size: 13px; }
+.panel-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.mappanel .mallmap { flex: 1; min-height: 0; width: 100%; margin: 4px 0 10px; }
+.mallmap .mpin { opacity: 0; transform-origin: 197px 100px; }
+.mallmap.found .mpin { animation: drop .7s var(--ease) both; }
+.mallmap.found .mdest { fill: #FFE4DF; transition: fill .4s; }
+.mallmap .myou circle:first-child { animation: pulse 1.6s ease-out infinite; transform-origin: 60px 85px; }
+.mappanel .ssteps { opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s var(--ease); }
+.mappanel .ssteps.in { opacity: 1; transform: none; }
+.chat-title { display: flex; align-items: center; gap: 8px; font: 600 16px var(--fd); }
+.chat { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; justify-content: flex-end; overflow: hidden; }
+.bubble { max-width: 86%; border-radius: 18px; padding: 10px 14px; animation: swap .45s var(--ease) both; font-size: 14.5px; }
+.bubble p { margin: 0; color: inherit; }
+.bubble.me { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 6px; }
+.bubble.bot { align-self: flex-start; background: #fff; color: var(--ink); border-bottom-left-radius: 6px; box-shadow: 0 1px 0 var(--line); display: grid; gap: 8px; }
+.ccardx { display: flex; align-items: center; gap: 10px; background: var(--soft); border-radius: 14px; padding: 8px 10px; }
+.ccardx span { display: grid; line-height: 1.25; flex: 1; }
+.ccardx b { font-size: 13.5px; }
+.ccardx small { font-size: 12px; }
+.ccardx em { font-style: normal; font-weight: 600; font-size: 12.5px; background: var(--gold); color: var(--gold-on); border-radius: 999px; padding: 5px 10px; white-space: nowrap; }
+.typing { display: flex !important; gap: 4px; padding: 14px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); animation: blinkdot 1s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes blinkdot { 50% { opacity: .25; } }
+.chat-input { display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 999px; padding: 6px 6px 6px 16px; margin-top: 12px; color: var(--ink-3); font-size: 14px; }
+.chat-input b { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); display: grid; place-items: center; }
+@media (max-width: 860px) { .duo { grid-template-columns: 1fr; } .panel { height: 440px; } }
+.store b, .store small, .bubble.me p, .btn b { color: inherit; }
+.store { color: #fff; }
+.tile { padding-top: clamp(10px, 1.8vh, 18px); padding-bottom: clamp(10px, 1.8vh, 18px); }
+.tile .illo { width: clamp(44px, 7vh, 60px); height: clamp(44px, 7vh, 60px); }
+.tphone { max-height: calc(100svh - 250px); }
+.tcol { gap: 14px; }
+.tphone { max-height: calc(100svh - 290px); } .tiles .tile span { font-size: 15px; }
