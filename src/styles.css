@@ -691,3 +691,31 @@ b, strong { font-weight: 600; color: var(--ink); }
 .duo-h { font-size: clamp(26px, min(2.6vw, 4.6vh), 38px); line-height: 1.1; margin-bottom: 14px; min-height: 2.2em; }
 .duo-label { font-size: 17px; color: var(--ink-2); }
 .duo { align-items: end; }
+
+/* v9: find section, one demo at a time */
+.find { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.find-copy { animation: swap .6s var(--ease) both; }
+.find-copy h2 { font-size: clamp(38px, min(4.6vw, 7.6vh), 66px); line-height: 1.04; margin: 22px 0 14px; }
+.find-tabs { display: inline-flex; gap: 6px; background: var(--soft); padding: 6px; border-radius: 999px; }
+.find-tabs button { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; font: 600 15px var(--fd); color: var(--ink-2); cursor: pointer; overflow: hidden; }
+.find-tabs button[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 0 var(--line), 0 8px 18px -12px rgba(0,0,0,.3); }
+.find-bar { position: absolute; left: 14px; right: 14px; bottom: 5px; height: 3px; border-radius: 3px; background: var(--gold); transform-origin: left; animation: grow 10s linear both; }
+.find-bar.held { animation-play-state: paused; }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.find-demo { animation: swap .6s var(--ease) both; }
+.find-demo .panel { height: clamp(380px, calc(100svh - 190px), 540px); }
+@media (max-width: 860px) { .find { grid-template-columns: 1fr; } .find-demo .panel { height: 440px; } }
+
+/* v10: headings in the logo yellow; the find section on marigold */
+:root { --amber: #FFB300; }
+.sec-gold { background: var(--gold); }
+.sec-gold h2 { color: var(--ink); }
+.sec-gold .lead { color: rgba(23,23,28,.78); }
+.sec-gold .panel { background: #fff; box-shadow: 0 30px 60px -30px rgba(80,50,0,.45); }
+.sec-gold .panel .ssearch, .sec-gold .panel .chat-input, .sec-gold .panel .schip { background: var(--soft); }
+.sec-gold .panel .ssteps, .sec-gold .bubble.bot { background: var(--soft); box-shadow: none; }
+.sec-gold .ccardx { background: #fff; }
+.sec-gold .find-tabs { background: rgba(255,255,255,.45); }
+.sec-gold .find-tabs button { color: rgba(23,23,28,.7); }
+.sec-gold .find-bar { background: var(--ink); }
+.hl { background: none; }

@@ -129,23 +129,34 @@ function Little() {
   );
 }
 
-/* ---------- Find it: map search and Ask AI side by side ---------- */
+/* ---------- Find it: map search, then Ask AI, one at a time ---------- */
+const FIND = [
+  { h: 'From “where is it?” to “there it is.”', label: 'Search the map', sub: 'Type a store. See it on the map, with simple steps.', icon: 'map' as IlloName },
+  { h: 'From “what should I get?” to “got it.”', label: 'Ask MallO', sub: 'Ask for ideas or the best deal. Open the store in a tap.', icon: 'ai' as IlloName },
+];
+
 function How() {
+  const [hold, setHold] = useState(false);
+  const [i, setI] = useCycle(FIND.length, 10000, hold);
+  const f = FIND[i];
   return (
-    <section className="frame" id="how">
-      <div className="wrap">
-        <div className="duo">
-          <Reveal className="duo-col">
-            <h2 className="duo-h">From “where is it?” to “there it is.”</h2>
-            <p className="duo-label"><Illo name="map" size={28} /> Search the map</p>
-            <MapSearch />
-          </Reveal>
-          <Reveal className="duo-col" delay={120}>
-            <h2 className="duo-h">From “what should I get?” to “got it.”</h2>
-            <p className="duo-label"><Illo name="ai" size={28} /> Or just ask</p>
-            <AskChat />
-          </Reveal>
+    <section className="frame sec-gold" id="how">
+      <div className="wrap find" onMouseEnter={() => setHold(true)} onMouseLeave={() => setHold(false)}>
+        <div className="find-txt">
+          <div className="find-tabs" role="tablist" aria-label="Ways to find things">
+            {FIND.map((x, k) => (
+              <button key={x.label} role="tab" aria-selected={k === i} onClick={() => setI(k)}>
+                <Illo name={x.icon} size={24} /> {x.label}
+                {k === i && <span className={`find-bar ${hold ? 'held' : ''}`} key={i} />}
+              </button>
+            ))}
+          </div>
+          <div key={i} className="find-copy">
+            <h2>{f.h}</h2>
+            <p className="lead">{f.sub}</p>
+          </div>
         </div>
+        <div className="find-demo" key={`d${i}`}>{i === 0 ? <MapSearch /> : <AskChat />}</div>
       </div>
     </section>
   );
