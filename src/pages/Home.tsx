@@ -134,14 +134,15 @@ function How() {
   return (
     <section className="frame" id="how">
       <div className="wrap">
-        <Reveal className="head center"><h2>From “where is it?” to “there it is.”</h2></Reveal>
         <div className="duo">
           <Reveal className="duo-col">
-            <p className="duo-label"><Illo name="map" size={30} /> Search the map</p>
+            <h2 className="duo-h">From “where is it?” to “there it is.”</h2>
+            <p className="duo-label"><Illo name="map" size={28} /> Search the map</p>
             <MapSearch />
           </Reveal>
           <Reveal className="duo-col" delay={120}>
-            <p className="duo-label"><Illo name="ai" size={30} /> Or just ask</p>
+            <h2 className="duo-h">From “what should I get?” to “got it.”</h2>
+            <p className="duo-label"><Illo name="ai" size={28} /> Or just ask</p>
             <AskChat />
           </Reveal>
         </div>

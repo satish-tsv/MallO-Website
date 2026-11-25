@@ -51,8 +51,11 @@ const CHAT: Msg[] = [
     { icon: 'store', t: 'Titan · Level 2', s: 'Watches from ₹1,500', cta: 'Open' },
     { icon: 'gift', t: 'Archies · Level 1', s: 'Gift sets', cta: 'Open' },
   ] },
-  { me: true, text: 'Nearest washroom?' },
-  { text: 'The closest one:', cards: [{ icon: 'washroom', t: 'Washrooms · Level 1', s: 'Near the food court', cta: 'Show on map' }] },
+  { me: true, text: 'Best deal on an iPhone?' },
+  { text: 'Best offers right now:', cards: [
+    { icon: 'offer', t: 'Croma · Level 1', s: 'Bank offer · ends Sun', cta: 'Open' },
+    { icon: 'store', t: 'Reliance Digital · Level 2', s: 'Exchange offer · ends 30 Nov', cta: 'Open' },
+  ] },
 ];
 
 /** Right panel: a short Ask AI conversation that plays out, then restarts. */
@@ -65,7 +68,7 @@ export function AskChat() {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="panel chatpanel" role="img" aria-label="Ask AI: a shopper asks for a gift for their dad under ₹2,000 and for the nearest washroom; MallO replies with stores and the washroom, each with a button to open it">
+    <div className="panel chatpanel" role="img" aria-label="Ask AI: a shopper asks for a gift for their dad under ₹2,000 and for the best deal on an iPhone; MallO replies with stores and offers, each with a button to open it">
       <div className="panel-top"><span className="chat-title"><Illo name="ai" size={26} /> Ask MallO</span><span className="schip">AI</span></div>
       <div className="chat" aria-hidden="true">
         {CHAT.slice(0, n).map((m, k) => (

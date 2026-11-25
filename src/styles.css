@@ -688,3 +688,6 @@ b, strong { font-weight: 600; color: var(--ink); }
 .tphone { max-height: calc(100svh - 250px); }
 .tcol { gap: 14px; }
 .tphone { max-height: calc(100svh - 290px); } .tiles .tile span { font-size: 15px; }
+.duo-h { font-size: clamp(26px, min(2.6vw, 4.6vh), 38px); line-height: 1.1; margin-bottom: 14px; min-height: 2.2em; }
+.duo-label { font-size: 17px; color: var(--ink-2); }
+.duo { align-items: end; }
