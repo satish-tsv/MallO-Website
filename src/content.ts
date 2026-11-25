@@ -7,7 +7,7 @@ export type Photo = { src: (w?: number) => string; alt: string; credit: string; 
 // Free photos under the Unsplash License, listed in photos.json (credits on the About page).
 // The deploy workflow downloads them into the site (img/<key>-800.jpg and -1600.jpg), so
 // they are served from our own domain. Without a local copy the browser shows a soft gradient.
-type Key = 'atrium' | 'chandelier' | 'gallery' | 'cafe' | 'escalator' | 'bags' | 'phone' | 'storefront' | 'biryani' | 'walk' | 'boutique';
+type Key = 'atrium' | 'chandelier' | 'gallery' | 'cafe' | 'escalator' | 'bags' | 'phone' | 'storefront' | 'biryani' | 'walk' | 'boutique' | 'kids' | 'arcade';
 
 export const PHOTOS = Object.fromEntries(
   PHOTO_LIST.map((p) => [p.key, { src: (w = 1600) => `img/${p.key}-${w <= 900 ? 800 : 1600}.jpg`, alt: p.alt, credit: p.credit, page: p.page } satisfies Photo]),

@@ -75,5 +75,19 @@
     "alt": "A small boutique with wooden shelves",
     "credit": "Piret Ilver",
     "page": "https://unsplash.com/photos/EvTuMAnhnKE"
+  },
+  {
+    "key": "kids",
+    "id": "photo-1751235640977-aa1061bca42c",
+    "alt": "Kids jumping and playing",
+    "credit": "Lawrence Crayton",
+    "page": "https://unsplash.com/photos/-o1yUD1u_8E"
+  },
+  {
+    "key": "arcade",
+    "id": "photo-1553640627-57a6de3bf0ff",
+    "alt": "A row of glowing arcade game machines",
+    "credit": "Matt & Chris Pua",
+    "page": "https://unsplash.com/photos/_aSOc5RT-8U"
   }
 ]
