@@ -21,7 +21,7 @@ export function About() {
           <div>
             <Reveal><span className="kicker">Our story</span><h2>A guide in every visitor’s pocket.</h2></Reveal>
             <Reveal><p className="lead">Malls keep getting bigger: more floors, more stores, more food and more offers. Signs and help desks can only do so much. MallO puts the whole mall on your phone, in plain words, with honest answers and clear steps.</p>
-            <p className="muted">We’re starting with large malls in Hyderabad, on Android and iPhone, and will add more cities over time.</p></Reveal>
+            <p className="muted">MallO is live in large malls in Hyderabad, Bengaluru, Chennai and Mumbai, on Android and iPhone, and we keep adding more.</p></Reveal>
           </div>
           <Reveal delay={100}><Img photo={PHOTOS.gallery} w={1200} className="rounded tallimg" /></Reveal>
         </div>

@@ -386,3 +386,78 @@ main:focus, h1:focus { outline: none; }
 .nav { background: rgba(255,255,255,.82); backdrop-filter: saturate(1.6) blur(16px); box-shadow: 0 1px 0 rgba(0,0,0,.05); }
 .nav ul a { color: var(--ink-2); }
 .nav ul a:hover, .nav ul a[aria-current] { color: var(--ink); background: var(--fill); }
+
+/* ===== One screen per section (v3) ===== */
+.frame { min-height: 100svh; display: flex; align-items: center; padding: 96px 0 40px; position: relative; overflow: hidden; }
+.frame > .wrap { width: 100%; }
+.frame .head { margin-bottom: clamp(20px, 4vh, 44px); }
+.frame h2 { font-size: clamp(30px, min(4.2vw, 6.4vh), 54px); }
+.frame .lead { font-size: clamp(16px, min(1.5vw, 2.4vh), 20px); }
+.hero.frame { padding: 92px 0 32px; background: linear-gradient(180deg, #fffaf0, #ffffff 75%); }
+.hero h1 { font-size: clamp(40px, min(5vw, 8.4vh), 74px); margin-bottom: .3em; }
+.hero .lead { margin-bottom: clamp(14px, 2.6vh, 26px); }
+.hero-art { min-height: 0; height: min(600px, calc(100svh - 160px)); }
+.ha-phone { transform: scale(var(--ps, .82)); }
+.howphone { transform: scale(var(--ps, .82)); }
+.howart { min-height: 0; height: min(600px, calc(100svh - 150px)); }
+
+/* city picker */
+.city { background: #fff; border-radius: 22px; padding: 16px 18px 18px; box-shadow: 0 18px 40px -28px rgba(0,0,0,.35); margin-bottom: clamp(14px, 2.4vh, 22px); max-width: 520px; }
+.city-q { margin: 0 0 10px; font-weight: 700; font-size: 14px; color: var(--ink-2); }
+.city-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.city-tabs button { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 0; background: var(--soft); font: 700 14.5px var(--fb); color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.city-tabs button[aria-checked="true"] { background: var(--gold); color: var(--gold-on); }
+.city-live { margin: 14px 0 8px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.city-malls { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.city-malls li { display: grid; background: var(--gold-soft); border-radius: 12px; padding: 7px 12px; line-height: 1.2; animation: pop .45s var(--ease) both; }
+.city-malls b { font-size: 14px; }
+.city-malls span { font-size: 12px; color: var(--gold-ink); }
+
+/* explore + more + moments sized to the screen */
+.ecard-img { aspect-ratio: auto; height: clamp(150px, 32vh, 300px); }
+.frame-photo { height: min(560px, calc(100svh - 170px)); border-radius: 32px; }
+.more { grid-template-columns: 1fr 1fr; margin-top: clamp(16px, 3vh, 28px); gap: 12px; }
+.mitem { padding: clamp(12px, 1.8vh, 18px); }
+.moment-img { aspect-ratio: auto; height: clamp(150px, 34vh, 320px); }
+.hsteps { margin: clamp(16px, 3vh, 32px) 0; gap: clamp(12px, 2.2vh, 22px); }
+
+/* points v2 */
+.ptsv2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.ptrack { list-style: none; padding: 0; margin: clamp(18px, 3.4vh, 32px) 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; position: relative; }
+.ptrack::before { content: ""; position: absolute; left: 22px; right: 22px; top: 22px; height: 2px; background: repeating-linear-gradient(90deg, var(--gold) 0 8px, transparent 8px 14px); }
+.ptrack li { position: relative; display: grid; gap: 4px; }
+.ptrack .mic { position: relative; z-index: 1; box-shadow: 0 0 0 6px #fff8e6; margin-bottom: 8px; }
+.ptrack b { font: 700 17px var(--fd); }
+.ptrack small { color: var(--ink-2); font-size: 13.5px; line-height: 1.35; }
+.pchips { display: flex; flex-wrap: wrap; gap: 8px; }
+.pchips span { background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 14px; box-shadow: 0 1px 0 var(--line); }
+.pchips b { color: var(--gold-ink); }
+.wallet { position: relative; display: grid; gap: 18px; justify-items: center; }
+.pcard { width: min(380px, 100%); aspect-ratio: 1.6; border-radius: 26px; padding: 24px 26px; display: flex; flex-direction: column; background: radial-gradient(120% 120% at 100% 0%, #ffe08a 0%, #ffb300 55%, #f59e0b 100%); color: var(--gold-on); box-shadow: 0 30px 60px -28px rgba(180, 110, 0, .7); position: relative; overflow: hidden; transform: rotate(-3deg); }
+.pcard::after { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 34px solid rgba(255,255,255,.22); right: -70px; bottom: -90px; }
+.pcard-top { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; }
+.pcard-num { font: 800 clamp(44px, 7vh, 64px)/1 var(--fd); margin-top: auto; }
+.pcard-sub { font-size: 13.5px; font-weight: 600; opacity: .8; margin-top: 6px; }
+.gcards { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.gcard { width: 128px; border-radius: 18px; padding: 14px; display: grid; gap: 2px; color: var(--ink); box-shadow: 0 16px 30px -20px rgba(0,0,0,.35); animation: floaty 5s ease-in-out infinite; }
+.gcard:nth-child(2) { animation-delay: -1.6s; } .gcard:nth-child(3) { animation-delay: -3.2s; }
+.gcard span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; opacity: .7; }
+.gcard b { font: 800 26px var(--fd); }
+.gcard small { font-size: 13px; font-weight: 600; }
+.g1 { background: var(--lilac); } .g2 { background: var(--peach); } .g3 { background: var(--sky); }
+.wallet .fine { margin: 0; text-align: center; max-width: 360px; }
+@media (max-width: 900px) { .ptsv2 { grid-template-columns: 1fr; } .ptrack { grid-template-columns: 1fr 1fr; row-gap: 20px; } .ptrack::before { display: none; } }
+
+/* get the app + partner band sized to screen */
+.get-img { aspect-ratio: auto; height: min(560px, calc(100svh - 170px)); }
+.pband-img { min-height: 0; height: min(520px, calc(100svh - 170px)); }
+.acc summary { padding-top: clamp(14px, 2.2vh, 22px); padding-bottom: clamp(14px, 2.2vh, 22px); }
+
+/* phones and small screens: let sections flow naturally */
+@media (max-width: 900px) {
+  .frame { min-height: 0; padding: 72px 0; }
+  .hero.frame { padding-top: 100px; }
+  .hero-art { height: 480px; }
+  .howart { height: 520px; }
+  .frame-photo, .get-img, .pband-img { height: 320px; }
+}

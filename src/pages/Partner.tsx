@@ -118,7 +118,7 @@ export function Partner() {
               </div>
               <div className="row2">
                 <label>Mall, store or brand name<input name="org" required /></label>
-                <label>City<input name="city" defaultValue="Hyderabad" /></label>
+                <label>City<input name="city" /></label>
               </div>
               <label>Email or phone<input name="contact" required autoComplete="email" /></label>
               <label>Message<textarea name="msg" rows={4} placeholder="Tell us about your mall, store or brand" /></label>
