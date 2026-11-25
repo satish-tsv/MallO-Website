@@ -20,7 +20,7 @@ const WHY: Record<Tab, { i: Parameters<typeof Icon>[0]['name']; t: string; s: st
     { i: 'gift', t: 'Bills that bring shoppers back', s: 'Shoppers earn MallO points on eligible bills from your store, at no cost to you.' },
     { i: 'clock', t: 'Correct hours and details', s: 'Your floor, hours, phone and what you sell, kept right. We only say you “sell” something once you confirm it.' },
     { i: 'phone', t: 'Nothing to install', s: 'No new device and no software for your staff. Just tell us what has changed.' },
-    { i: 'store', t: 'Gift card partnerships', s: 'Brands can offer their gift cards to MallO members, who redeem their points with you.' },
+    { i: 'store', t: 'Gift card partnerships', s: 'Brands can offer their gift cards to MallO members, who redeem their points for them.' },
   ],
 };
 

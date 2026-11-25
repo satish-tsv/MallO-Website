@@ -20,7 +20,7 @@ export function About() {
         <div className="wrap split2">
           <div>
             <Reveal><span className="kicker">Our story</span><h2>Easier visits. Real rewards.</h2></Reveal>
-            <Reveal><p className="lead">Malls keep getting bigger: more floors, more stores, more food and more offers. MallO puts the whole mall on your phone, in plain words, with honest answers and clear steps. And every eligible bill earns MallO points you can turn into gift cards to spend at the mall.</p>
+            <Reveal><p className="lead">Malls keep getting bigger: more floors, more stores, more food and more offers. MallO puts the whole mall on your phone, in plain words, with honest answers and clear steps. And every eligible bill earns MallO points you can redeem for gift cards.</p>
             <p className="muted">MallO is live in large malls in Hyderabad, Bengaluru, Chennai and Mumbai, on Android and iPhone, and we keep adding more.</p></Reveal>
           </div>
           <Reveal delay={100}><Img photo={PHOTOS.gallery} w={1200} className="rounded tallimg" /></Reveal>

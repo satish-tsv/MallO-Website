@@ -51,7 +51,7 @@ function Hero() {
             <ul className="perks">
               <li><span className="mic c-sky"><Icon name="search" /></span><div><b>Find it fast</b><small>Stores, food, offers and washrooms in one search</small></div></li>
               <li><span className="mic c-mint"><Icon name="map" /></span><div><b>Get there easily</b><small>Clear steps from landmarks you can see</small></div></li>
-              <li><span className="mic c-peach"><Icon name="gift" /></span><div><b>Win rewards</b><small>Points on every bill, for gift cards at the mall</small></div></li>
+              <li><span className="mic c-peach"><Icon name="gift" /></span><div><b>Win rewards</b><small>Points on every bill. Redeem them for gift cards</small></div></li>
             </ul>
           </Reveal>
           <Reveal delay={240}><StoreButtons /></Reveal>
@@ -94,12 +94,12 @@ const STEPS = [
   { i: 'store' as const, t: 'Shop', s: 'At any store in the mall', c: 'c-sky' },
   { i: 'phone' as const, t: 'Scan your bill', s: 'Within 7 days, in the app', c: 'c-lilac' },
   { i: 'check' as const, t: 'Earn points', s: '50 points for every ₹1,000', c: 'c-mint' },
-  { i: 'gift' as const, t: 'Redeem', s: 'For gift cards to spend in the mall', c: 'c-peach' },
+  { i: 'gift' as const, t: 'Redeem', s: 'Points for gift cards', c: 'c-peach' },
 ];
 
 const GIFTS = [
   { t: 'Fashion', v: '₹500', c: 'g1' },
-  { t: 'Food court', v: '₹250', c: 'g2' },
+  { t: 'Food', v: '₹250', c: 'g2' },
   { t: 'Electronics', v: '₹1,000', c: 'g3' },
 ];
 
@@ -178,8 +178,8 @@ export function Home() {
       <section className="frame tint-gold" id="points">
         <div className="wrap ptsv2">
           <div>
-            <Reveal><span className="kicker">MallO points</span><h2>Shop, scan, earn.<br />Spend it at the mall.</h2></Reveal>
-            <Reveal delay={60}><p className="lead">Every eligible bill from a store in the mall earns points. Turn them into gift cards for brands in the same mall.</p></Reveal>
+            <Reveal><span className="kicker">MallO points</span><h2>Shop, scan, earn.<br />Redeem gift cards.</h2></Reveal>
+            <Reveal delay={60}><p className="lead">Every eligible bill from a store in the mall earns points. Redeem them for gift cards.</p></Reveal>
             <ol className="ptrack">
               {STEPS.map((s, k) => (
                 <Reveal as="li" key={s.t} delay={k * 90}>
