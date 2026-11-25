@@ -21,8 +21,8 @@
   --sky: #e1efff;
   --sky-ink: #1d5fc4;
   --gold-ink: #8a5a00;
-  --fd: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
-  --fb: "DM Sans", system-ui, sans-serif;
+  --fd: "Plus Jakarta Sans", system-ui, sans-serif;
+  --fb: "Plus Jakarta Sans", system-ui, sans-serif;
   --r: 24px;
   --max: 1200px;
   --ease: cubic-bezier(.2, .7, .2, 1);
@@ -468,3 +468,33 @@ main:focus, h1:focus { outline: none; }
 .perks b { display: block; font: 700 17px var(--fd); }
 .perks small { color: var(--ink-2); font-size: 14px; }
 #cities .city { max-width: none; padding: 24px; }
+
+/* ===== Brand colours (v5): white, ink and one accent, marigold. No pastels, no gradients. ===== */
+body { font-size: 16.5px; letter-spacing: -.005em; }
+h1, h2, h3 { letter-spacing: -.03em; }
+.tint-gold, .tint-peach, .tint-lilac, .tint-mint, .tint-sky { background: var(--soft); }
+.c-gold, .c-peach, .c-lilac, .c-mint, .c-sky { --c: var(--fill); --ci: var(--ink); }
+.c-gold.mic, .c-peach.mic, .c-lilac.mic, .c-mint.mic, .c-sky.mic { background: var(--gold-soft); color: var(--ink); }
+.ecard, .moment { background: #fff; box-shadow: 0 1px 0 var(--line), 0 18px 40px -30px rgba(0,0,0,.3); }
+.ecard-body span, .moment-txt span { color: var(--ink-2); }
+.blob { display: none; }
+.hero, .hero.frame { background: #fff; }
+.img { background: var(--fill); }
+.mitem, .perks li, .city, .pt, .wcard, .ccard, .need, .pform, .acc details { box-shadow: 0 1px 0 var(--line), 0 14px 30px -26px rgba(0,0,0,.3); }
+.tint-gold .wcard, .tint-peach .ccard, .tint-sky .wcard, .tint-mint .need, .tint-mint .wcard { background: #fff; }
+.sec:not([class*="tint-"]) .wcard, .frame:not([class*="tint-"]) .mitem { background: var(--soft); box-shadow: none; }
+.float svg, .f3 svg, .get-badge svg, .maillink { color: var(--ink); }
+.ptrack .mic { box-shadow: 0 0 0 6px var(--soft); }
+.pchips b, .city-malls span { color: var(--ink-2); }
+.pchips b { color: var(--ink); }
+.pcard { background: var(--gold); box-shadow: 0 30px 60px -30px rgba(23,23,28,.45); }
+.pcard::after { border-color: rgba(23,23,28,.08); }
+.gcard { background: #fff !important; box-shadow: 0 1px 0 var(--line), 0 16px 30px -22px rgba(0,0,0,.35); }
+.gcard b { color: var(--ink); }
+.pband { background: var(--soft); }
+.foot { background: var(--soft); }
+.imgstack .is-b { border-color: var(--soft); }
+.pform { box-shadow: 0 1px 0 var(--line), 0 30px 60px -40px rgba(0,0,0,.3); }
+.city-tabs button { background: var(--fill); }
+.phero-img { transform: none; }
+.hl { background: linear-gradient(180deg, transparent 64%, var(--gold) 64%, var(--gold) 88%, transparent 88%); }
